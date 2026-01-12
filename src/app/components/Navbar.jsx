@@ -10,7 +10,9 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <span className="text-2xl font-bold text-black">
-              <span className="italic">Portfolio</span>
+              <span className="italic">
+                <img className='flex w-40 h-16' src='./logo.png'></img>
+              </span>
             </span>
           </div>
           

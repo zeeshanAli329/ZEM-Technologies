@@ -21,9 +21,9 @@ html {
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+/* ::-webkit-scrollbar-thumb:hover {
   background: #2563eb;
-}
+} */
 
 /* Typing animation */
 @keyframes typing {
@@ -110,21 +110,21 @@ html {
 }
 
 /* Pulse animation */
-@keyframes pulse-slow {
+/* @keyframes pulse-slow {
   0%, 100% {
     opacity: 1;
   }
   50% {
     opacity: 0.5;
   }
-}
+} */
 
 /* Shake animation */
-@keyframes shake {
+/* @keyframes shake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }
-}
+} */
 
 /* Bounce animation */
 @keyframes bounce-slow {

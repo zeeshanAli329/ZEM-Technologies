@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 const Projects = () => {
   const [visibleProjects, setVisibleProjects] = useState([]);
@@ -13,6 +14,8 @@ const Projects = () => {
         "A full-featured e-commerce platform built with Next.js, featuring product catalog, shopping cart, and payment integration.",
       image: "no-1.jpg",
       technologies: ["Next.js", "React", "Tailwind CSS", "Stripe"],
+      demo: "https://your-ecommerce-demo.vercel.app",
+      code: "https://github.com/username/ecommerce-platform",
     },
     {
       id: 2,
@@ -21,6 +24,8 @@ const Projects = () => {
         "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
       image: "/no-2.png",
       technologies: ["React", "Redux", "Firebase", "Material-UI"],
+      demo: "https://task-buddy-app.vercel.app/",
+      code: "https://github.com/username/task-manager",
     },
     {
       id: 3,
@@ -29,6 +34,8 @@ const Projects = () => {
         "A responsive weather dashboard with location-based forecasts, interactive maps, and detailed weather analytics.",
       image: "weather.png",
       technologies: ["JavaScript", "Chart.js", "OpenWeather API", "Bootstrap"],
+      demo: "https://weather-app-ochre-theta-77.vercel.app/",
+      code: "https://github.com/username/weather-dashboard",
     },
     {
       id: 4,
@@ -37,6 +44,8 @@ const Projects = () => {
         "A modern portfolio website with smooth animations, dark mode toggle, and optimized performance.",
       image: "/portfolio.png",
       technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
+      demo: "https://portfolio-orcin-omega-18.vercel.app/",
+      code: "https://github.com/username/portfolio",
     },
     {
       id: 5,
@@ -45,14 +54,18 @@ const Projects = () => {
         "A front-end food ordering app with dynamic menu browsing, cart management, and responsive UI.",
       image: "/food.png",
       technologies: ["React", "Tailwind CSS", "Redux Toolkit"],
+      demo: "https://food-hub-bx7m.vercel.app/",
+      code: "https://github.com/username/food-app",
     },
     {
-      id: 5,
+      id: 6,
       title: "WorkFotos-Style Front-End App",
       description:
         "A front-end photo-management app with project-based albums, photo uploads, client sharing links and interactive UI.",
       image: "/work.svg",
       technologies: ["React", "Tailwind CSS", "TypeScript"],
+      demo: "https://work-fotos.vercel.app/",
+      code: "https://github.com/username/workfotos-clone",
     },
   ];
 
@@ -60,7 +73,6 @@ const Projects = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Add projects one by one with delay
           projects.forEach((project, index) => {
             setTimeout(() => {
               setVisibleProjects((prev) => [...prev, project.id]);
@@ -95,8 +107,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`
-                bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-500 transform
+              className={`bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-500 transform
                 ${
                   visibleProjects.includes(project.id)
                     ? "slide-in-up opacity-100 translate-y-0"
@@ -106,19 +117,23 @@ const Projects = () => {
               `}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+              {/* Image */}
               <div className="h-48 bg-gray-200 relative overflow-hidden">
-  <img
-    src={project.image}
-    alt={project.title}
-    className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
-  />
-</div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                />
+              </div>
 
+              {/* Content */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 shake">
                   {project.title}
                 </h3>
                 <p className="text-gray-600 mb-4">{project.description}</p>
+
+                {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
@@ -129,13 +144,23 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
+
+                {/* Buttons */}
                 <div className="flex space-x-4">
-                  <button className="text-blue-600 hover:text-blue-800 font-medium shake">
+                  <Link
+                    href={project.demo}
+                    target="_blank"
+                    className="text-blue-600 hover:text-blue-800 font-medium shake"
+                  >
                     View Demo
-                  </button>
-                  <button className="text-gray-600 hover:text-gray-800 font-medium shake">
+                  </Link>
+                  <Link
+                    href={project.code}
+                    target="_blank"
+                    className="text-gray-600 hover:text-gray-800 font-medium shake"
+                  >
                     Source Code
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
